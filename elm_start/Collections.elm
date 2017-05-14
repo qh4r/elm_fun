@@ -32,7 +32,7 @@ animals =
 
 -- LISTY MUSZA MIEC 1 SPOJNY TYP
 
-
+--(\... -> ) -- lambda ja w haskelu
 findAnimal : List Animal -> String -> Maybe Animal
 findAnimal animals key =
   List.foldl

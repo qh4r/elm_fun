@@ -1,0 +1,196 @@
+var _user$project$HtmlParse$objs = {
+	ctor: '::',
+	_0: {name: 'test'},
+	_1: {
+		ctor: '::',
+		_0: {name: 'rekin'},
+		_1: {
+			ctor: '::',
+			_0: {name: 'wunsz'},
+			_1: {ctor: '[]'}
+		}
+	}
+};
+var _user$project$HtmlParse$nums = {
+	ctor: '::',
+	_0: 1,
+	_1: {
+		ctor: '::',
+		_0: 2,
+		_1: {
+			ctor: '::',
+			_0: 34,
+			_1: {
+				ctor: '::',
+				_0: 5,
+				_1: {ctor: '[]'}
+			}
+		}
+	}
+};
+var _user$project$HtmlParse$genericLi = function (input) {
+	return A2(
+		_elm_lang$html$Html$li,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(
+				_elm_lang$core$Basics$toString(input)),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$HtmlParse$renderCar = function (car) {
+	return A2(
+		_elm_lang$html$Html$li,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'color', _1: 'red'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'list-style', _1: 'none'},
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$b,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(car.model),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html$text(
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						' owned by: ',
+						A2(_elm_lang$core$Basics_ops['++'], car.owner, ' is '))),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$i,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(
+								_elm_lang$core$Basics$toString(car.age)),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(' years old'),
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		});
+};
+var _user$project$HtmlParse$cars = {
+	ctor: '::',
+	_0: {model: 'Audi', age: 15, owner: 'Rafał'},
+	_1: {
+		ctor: '::',
+		_0: {model: 'Ford', age: 6, owner: 'Krzysztof'},
+		_1: {
+			ctor: '::',
+			_0: {model: 'Opel', age: 17, owner: 'Janusz'},
+			_1: {ctor: '[]'}
+		}
+	}
+};
+var _user$project$HtmlParse$renderCars = A2(
+	_elm_lang$html$Html$div,
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'font-family', _1: 'Arial sans-serif'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'padding', _1: '1.5rem'},
+					_1: {ctor: '[]'}
+				}
+			}),
+		_1: {ctor: '[]'}
+	},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$h1,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text('CARS'),
+				_1: {ctor: '[]'}
+			}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$p,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('tes-t'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$ul,
+					{ctor: '[]'},
+					A2(
+						_elm_lang$core$List$map,
+						function (car) {
+							return _user$project$HtmlParse$renderCar(car);
+						},
+						_user$project$HtmlParse$cars)),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$ul,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$style(
+								{
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'color', _1: 'blue'},
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						},
+						A2(_elm_lang$core$List$map, _user$project$HtmlParse$genericLi, _user$project$HtmlParse$nums)),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$ul,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$style(
+									{
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'color', _1: 'green'},
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							},
+							A2(_elm_lang$core$List$map, _user$project$HtmlParse$genericLi, _user$project$HtmlParse$objs)),
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		}
+	});
+var _user$project$HtmlParse$main = _elm_lang$virtual_dom$Native_VirtualDom.staticProgram(_user$project$HtmlParse$renderCars);
+var _user$project$HtmlParse$Car = F3(
+	function (a, b, c) {
+		return {model: a, age: b, owner: c};
+	});
