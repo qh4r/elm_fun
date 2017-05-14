@@ -1,0 +1,75 @@
+var _user$project$Second$sumStrings = F2(
+	function (next, sum) {
+		return A2(
+			_elm_lang$core$Basics_ops['++'],
+			sum,
+			A2(_elm_lang$core$Basics_ops['++'], ', _>', next));
+	});
+var _user$project$Second$readAnimal = function (maybeAnimal) {
+	var _p0 = maybeAnimal;
+	if (_p0.ctor === 'Just') {
+		return function (_) {
+			return _.species;
+		}(_p0._0);
+	} else {
+		return '';
+	}
+};
+var _user$project$Second$findAnimal = F2(
+	function (animals, key) {
+		return A3(
+			_elm_lang$core$List$foldl,
+			F2(
+				function (animal, output) {
+					var _p1 = output;
+					if (_p1.ctor === 'Just') {
+						return output;
+					} else {
+						return _elm_lang$core$Native_Utils.eq(animal.species, key) ? _elm_lang$core$Maybe$Just(animal) : _elm_lang$core$Maybe$Nothing;
+					}
+				}),
+			_elm_lang$core$Maybe$Nothing,
+			animals);
+	});
+var _user$project$Second$animals = {
+	ctor: '::',
+	_0: {species: 'cat', count: 5},
+	_1: {
+		ctor: '::',
+		_0: {species: 'dog', count: 43},
+		_1: {
+			ctor: '::',
+			_0: {species: 'lion', count: 3},
+			_1: {
+				ctor: '::',
+				_0: {species: 'monkey', count: 12},
+				_1: {ctor: '[]'}
+			}
+		}
+	}
+};
+var _user$project$Second$main = _elm_lang$virtual_dom$Native_VirtualDom.staticProgram(
+	_elm_lang$html$Html$text(
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			_elm_lang$core$String$toUpper(
+				_elm_lang$core$Basics$toString(
+					A3(
+						_elm_lang$core$List$foldl,
+						_user$project$Second$sumStrings,
+						'start ',
+						A2(
+							_elm_lang$core$List$map,
+							function (_) {
+								return _.species;
+							},
+							_user$project$Second$animals)))),
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				' FIND RESULT -> : ',
+				_user$project$Second$readAnimal(
+					A2(_user$project$Second$findAnimal, _user$project$Second$animals, 'lion'))))));
+var _user$project$Second$Animal = F2(
+	function (a, b) {
+		return {species: a, count: b};
+	});
