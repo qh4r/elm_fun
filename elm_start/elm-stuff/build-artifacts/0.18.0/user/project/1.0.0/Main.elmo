@@ -1,79 +1,186 @@
+var _user$project$Main$validateNumber = function (number) {
+	return A2(
+		_elm_lang$core$String$all,
+		function (x) {
+			return _elm_lang$core$Char$isDigit(x);
+		},
+		number) ? 'green' : 'red';
+};
+var _user$project$Main$validationView = function (model) {
+	var _p0 = (_elm_lang$core$Native_Utils.cmp(
+		_elm_lang$core$String$length(model.pass),
+		3) < 0) ? {ctor: '_Tuple2', _0: 'red', _1: 'Za krotkie'} : ((!(A2(_elm_lang$core$String$any, _elm_lang$core$Char$isDigit, model.pass) && (A2(
+		_elm_lang$core$String$any,
+		function (x) {
+			return _elm_lang$core$Char$isLower(x);
+		},
+		model.pass) && A2(
+		_elm_lang$core$String$any,
+		function (x) {
+			return _elm_lang$core$Char$isUpper(x);
+		},
+		model.pass)))) ? {ctor: '_Tuple2', _0: 'red', _1: 'Wymaga dużych i małych liter oraz cyfr'} : ((!_elm_lang$core$Native_Utils.eq(model.pass, model.repeatedPass)) ? {ctor: '_Tuple2', _0: 'red', _1: 'Nie pasuje'} : {ctor: '_Tuple2', _0: 'green', _1: 'Pasuje'}));
+	var color = _p0._0;
+	var message = _p0._1;
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'color', _1: color},
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(message),
+			_1: {ctor: '[]'}
+		});
+};
 var _user$project$Main$update = F2(
-	function (msg, state_) {
-		var _p0 = msg;
-		if (_p0.ctor === 'ShowSecret') {
-			return _elm_lang$core$Native_Utils.update(
-				state_,
-				{secretVisible: true});
-		} else {
-			return _elm_lang$core$Native_Utils.update(
-				state_,
-				{secretVisible: false});
+	function (msg, model) {
+		var _p1 = msg;
+		switch (_p1.ctor) {
+			case 'UpdateName':
+				return _elm_lang$core$Native_Utils.update(
+					model,
+					{name: _p1._0});
+			case 'UpdatePass':
+				return _elm_lang$core$Native_Utils.update(
+					model,
+					{pass: _p1._0});
+			case 'UpdateRepeatedPass':
+				return _elm_lang$core$Native_Utils.update(
+					model,
+					{repeatedPass: _p1._0});
+			default:
+				return _elm_lang$core$Native_Utils.update(
+					model,
+					{age: _p1._0});
 		}
 	});
-var _user$project$Main$state = {secretVisible: false};
-var _user$project$Main$State = function (a) {
-	return {secretVisible: a};
+var _user$project$Main$Model = F4(
+	function (a, b, c, d) {
+		return {name: a, pass: b, repeatedPass: c, age: d};
+	});
+var _user$project$Main$model = A4(_user$project$Main$Model, '', '', '', '');
+var _user$project$Main$UpdateAge = function (a) {
+	return {ctor: 'UpdateAge', _0: a};
 };
-var _user$project$Main$HideSecret = {ctor: 'HideSecret'};
-var _user$project$Main$ShowSecret = {ctor: 'ShowSecret'};
-var _user$project$Main$view = function (state_) {
+var _user$project$Main$ageField = function (model) {
+	var color = _user$project$Main$validateNumber(model.age);
+	return A2(
+		_elm_lang$html$Html$input,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$type_('text'),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$placeholder('Wiek'),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$style(
+						{
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'color', _1: color},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'border-color', _1: color},
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$UpdateAge),
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		},
+		{ctor: '[]'});
+};
+var _user$project$Main$UpdateRepeatedPass = function (a) {
+	return {ctor: 'UpdateRepeatedPass', _0: a};
+};
+var _user$project$Main$UpdatePass = function (a) {
+	return {ctor: 'UpdatePass', _0: a};
+};
+var _user$project$Main$UpdateName = function (a) {
+	return {ctor: 'UpdateName', _0: a};
+};
+var _user$project$Main$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{ctor: '[]'},
 		{
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$h1,
-				{ctor: '[]'},
+				_elm_lang$html$Html$input,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('Sekret'),
-					_1: {ctor: '[]'}
-				}),
+					_0: _elm_lang$html$Html_Attributes$type_('text'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$placeholder('Imie'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$UpdateName),
+							_1: {ctor: '[]'}
+						}
+					}
+				},
+				{ctor: '[]'}),
 			_1: {
 				ctor: '::',
 				_0: A2(
-					_elm_lang$html$Html$button,
+					_elm_lang$html$Html$input,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$ShowSecret),
-						_1: {ctor: '[]'}
+						_0: _elm_lang$html$Html_Attributes$type_('password'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$placeholder('Hasło'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$UpdatePass),
+								_1: {ctor: '[]'}
+							}
+						}
 					},
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html$text('Pokaż'),
-						_1: {ctor: '[]'}
-					}),
+					{ctor: '[]'}),
 				_1: {
 					ctor: '::',
 					_0: A2(
-						_elm_lang$html$Html$button,
+						_elm_lang$html$Html$input,
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$HideSecret),
-							_1: {ctor: '[]'}
+							_0: _elm_lang$html$Html_Attributes$type_('password'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$placeholder('Powtórz Hasło'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$UpdateRepeatedPass),
+									_1: {ctor: '[]'}
+								}
+							}
 						},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text('Ukryj'),
-							_1: {ctor: '[]'}
-						}),
+						{ctor: '[]'}),
 					_1: {
 						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$p,
-							{ctor: '[]'},
-							{
-								ctor: '::',
-								_0: state_.secretVisible ? _elm_lang$html$Html$text('To tejemnica CIIII ') : _elm_lang$html$Html$text(''),
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
+						_0: _user$project$Main$ageField(model),
+						_1: {
+							ctor: '::',
+							_0: _user$project$Main$validationView(model),
+							_1: {ctor: '[]'}
+						}
 					}
 				}
 			}
 		});
 };
 var _user$project$Main$main = _elm_lang$html$Html$beginnerProgram(
-	{model: _user$project$Main$state, update: _user$project$Main$update, view: _user$project$Main$view})();
+	{model: _user$project$Main$model, view: _user$project$Main$view, update: _user$project$Main$update})();
